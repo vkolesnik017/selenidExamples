@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="OpenRozetka" parallel="methods" thread-count="2"  data-provider-thread-count="1">
+    <test name="OpenRozetka" >
+        <classes>
+            <class name = "Test2"/>
+            <class name = "Test3"/>
+            <class name = "TestSecondOffice">
+            </class>
+        </classes>
+    </test>
+</suite>
