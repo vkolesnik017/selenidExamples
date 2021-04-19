@@ -1,23 +1,31 @@
+import com.codeborne.selenide.ElementsCollection;
+import org.testng.Assert;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import static com.codeborne.selenide.Selenide.$$x;
+
 public class Test1 {
     public static void main(String[] args) {
-        NumericInterface f= (x,y)->{
-            int r=x+y;
-            return r;
-        };
 
-        NumericInterface umn= (x,y)->{
-            int r=x*y;
-            return r;
-        };
+        ElementsCollection list = $$x("//div");
 
-        NumerString ff = (n) -> System.out.println(n);
-        ff.ss("hello");
+ /*       List<Integer> list = Arrays.asList(4, 8, 5, 2, 1,8,4,1,5, 3, 5, 89);
+        List<Integer> hashList = list.stream().distinct().sorted().collect(Collectors.toList());
 
-        NumericInterface f1=(x,y) -> x*y;
-        System.out.println("Факториал числа 3  = " + f.calculate(5,8));
-        System.out.println(umn.calculate(2,9));
-        System.out.println(f1.calculate(9,8));
+        long count = list.stream().count();
+
+        System.out.println(count);
+        hashList.forEach(System.out::println);*/
+
+        Assert.assertEquals(2.23f,2.29f,0.03);
+
+        List<String> allTitles = list.stream().map(n->n.getText()).collect(Collectors.toList());
+
     }
 
-   // public static int func(int n)
+
+
 }

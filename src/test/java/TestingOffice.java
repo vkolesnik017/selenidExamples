@@ -22,9 +22,10 @@ public class TestingOffice {
     }
 
    @Test
-    public void testing() {
+    public void testing(){
         Configuration.assertionMode= AssertionMode.SOFT;
         open("https://getnada.com/msg");
+
         $(byXpath("//div[@class='amg']")).shouldBe(visible);
 //        $(byId("mail")).shouldHave(text("@"));
         //  System.out.println($(byId("mail")).getText());

@@ -5,7 +5,7 @@
         <classes>
             <class name = "Test2"/>
             <class name = "Test3"/>
-            <class name = "TestSecondOffice">
+            <class name = "TestWithAllure">
             </class>
         </classes>
     </test>

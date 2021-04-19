@@ -1,14 +1,14 @@
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.ElementsCollection;
-import com.codeborne.selenide.SelenideElement;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import java.lang.reflect.Method;
+import java.util.Random;
 
-import static com.codeborne.selenide.CollectionCondition.sizeNotEqual;
+import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
+import static org.testng.AssertJUnit.assertFalse;
 
 public class Test3 {
     {
@@ -25,9 +25,19 @@ public class Test3 {
     public void testMethod(String data) {
         open("https://lkwteile.autodoc.de/");
         $x("//div[@class='header__main']").shouldBe(visible);
-        $x("//a[@class='menu-catalog__enter--disabled js-menu-catalog__enter-lkw menu-catalog__enter-lkw']").click();
+
+        ElementsCollection carBrand = $$x("//div[@class='truck-home-cars__image']");
+
+        carBrand.get(1).click();
+        pageLoader();
+        ElementsCollection marks = $$x("//div[@class='lkw_top_models']/ul/li/a");
+
+        marks.shouldHave(sizeGreaterThan(10));
+        System.out.println();
+
+       /* $x("//a[@class='menu-catalog__enter--disabled js-menu-catalog__enter-lkw menu-catalog__enter-lkw']").click();
         $x("//div[@class='menu-category__block']").shouldBe(visible);
-        /*-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+        *//*-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*//*
         ElementsCollection categories = $$x("//li[contains(@class,'menu-category__first-item')]");
         ElementsCollection activcategoryOfSecondBlock = $$x("//div[@class='menu-category__2-block']//li[contains(@class,'menu-category__item')]/span/span").filter(visible);
         ElementsCollection activeCategoryOfThirdBlock = $$x("//div[@class='menu-category__3-block']//li[@class='menu-category__item']").filter(visible);
@@ -44,6 +54,11 @@ public class Test3 {
             }
             }
      }
-
+*/
     }
+
+    public void pageLoader() {
+        Wait().until(webDriver -> executeJavaScript("return document.readyState").equals("complete"));
+    }
+
 }
